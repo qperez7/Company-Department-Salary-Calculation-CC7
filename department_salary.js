@@ -74,3 +74,16 @@ return totalDepartmentSales;
 //Calculate total salary for a department
 const totalDepartmentSales = calculateDepartmentSalary('Enginnering');
 console.log(`Total salary for the Enginnering department: $${totalDepartmentSales}`);
+
+// Task 3: Create a Function to Calculate the Total Salary for All Departments
+function calculateDepartmentSalary(company) {
+    let totalSalary = company.departments.employees.salary;
+// Recursive calculations for salary for each subordinate
+for( let subordinate of company.subordinates) {
+    totalSalary += calculateDepartmentSalary(subordinate);
+}
+return totalSalary;
+}
+// Calculate total salary for the company
+const totalSalary = calculateDepartmentSalary(company);
+console.log(`Total Sales for the company: $${totalSalary}`); 
